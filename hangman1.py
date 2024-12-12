@@ -3,7 +3,7 @@ import random
 print("Hangman davai noh ütle sõna")
 print("-------------------------------------------")
 
-wordDictionary = ["maja", "lill", "tont", "janre","neeger","sõna", "hey", "mida", "markus"]
+wordDictionary = ["maja", "lill", "tont", "janre","peegel","sõna", "hey", "mida", "markus"]
 
 
 randomWord = random.choice(wordDictionary)
@@ -54,7 +54,7 @@ def print_hangman(vale):
     print("/|\  |")
     print("/ \  |")
     print("    ===")
-
+#mingi stickmenid (videost saadud)
 def printWord(guessedLetters):
   counter=0
   rightLetters=0
@@ -66,6 +66,7 @@ def printWord(guessedLetters):
       print(" ", end=" ")
     counter+=1
   return rightLetters
+#näitab ainult neid tähti mis on õigesti arvatud ja valed asendab tühikutega
 
 def printLines():
   print("\r")
@@ -80,11 +81,15 @@ current_letters_right = 0
 
 while(paljuvale != 6 and current_letters_right != length_of_word_to_guess):
   print("\nLetters guessed so far: ")
+ #kui valesid vastatud pole 6 ja õigesti_vastatud ei ole sõna pikkus siis print järgmisele reale "Letters guessed so far"
+
   for letter in current_letters_guessed:
     print(letter, end=" ")
 
   letterGuessed = input("\nGuess a letter: ")
-
+  if len(letterGuessed) > 1:
+      print("üks täht max, proovi uuesti!!")
+  
   if(randomWord[current_guess_index] == letterGuessed):
     print_hangman(paljuvale)
 
